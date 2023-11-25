@@ -20,7 +20,7 @@ const ApplyPage = lazy(() => import('./applyPage'));
 const tokenExpired = async function () {
   const token = localStorage.getItem('token');
   const res = await axios({
-    url: 'http://localhost:8000/api/users/jwtExpired',
+    url: import.meta.env.VITE_ENVIRONMENT === 'development' ? `${ import.meta.env.VITE_DEV_BASE_URL }/users/jwtExpired` : `${ import.meta.env.VITE_PROD_BASE_URL }/users/jwtExpired`,
     method: 'POST',
     data: {
       token

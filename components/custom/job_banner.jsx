@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import bigLogo from '../../src/assets/images/accenture_big_logo.svg';
 import { Info, Share, Star } from 'lucide-react';
 import { useSelector } from 'react-redux';
-import { useCallback, useEffect, useState } from 'react';
-import moment from 'moment/moment';
+import { useEffect, useState } from 'react';
 
 const JobBanner = ({ jobDetails=false, jobData={} }) => {
 
   const user = useSelector(state => state.user.user);
   const [disabled, setDisabled] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
+    if (!user) return navigate('/login');
     user.applications.map(application => {
       if (application.job === jobData._id) setDisabled(true);
     })
@@ -46,8 +47,7 @@ const JobBanner = ({ jobDetails=false, jobData={} }) => {
               <div className="w-[10rem] relative">
                 <Link to={ `/job/${ jobData._id }/apply` }>
                   <button disabled={ disabled } className="p-3 w-full text-sm bg-black disabled:pointer-events-none disabled:opacity-50 font-bold z-[3] relative transition-all duration-500 hover:-translate-x-2 hover:-translate-y-2 text-white shadow-sm">
-                      APPLY NOW
-                      { disabled && <p>Applied On { new Date(user.applications.filter(application => application.job === jobData._id)[0].createdAt).toDateString() }</p> }
+                      { disabled ? <p>Applied On { new Date(user.applications.filter(application => application.job === jobData._id)[0].createdAt).toDateString() }</p> : 'APPLY NOW' }
                   </button>
                 </Link>
                 <span className="w-full h-full translate-x-1 translate-y-1 bg-gray-400 z-[2] block absolute top-0"></span>

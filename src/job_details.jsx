@@ -13,7 +13,7 @@ import Footer from "./footer";
 const getJobDetails = async (jobId) => {
   const res = await axios({
     method: 'GET',
-    url: `http://localhost:8000/api/jobs/${ jobId }`
+    url: import.meta.env.VITE_ENVIRONMENT === 'development' ? `${ import.meta.env.VITE_DEV_BASE_URL }/jobs/${ jobId }` : `${ import.meta.env.VITE_PROD_BASE_URL }/jobs/${ jobId }`,
   });
   return res.data.data.job;
 }

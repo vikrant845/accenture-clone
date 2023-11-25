@@ -14,7 +14,7 @@ async function getJobData() {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://localhost:8000/api/jobs'
+      url: import.meta.env.VITE_ENVIRONMENT === 'development' ? `${ import.meta.env.VITE_DEV_BASE_URL }/jobs` : `${ import.meta.env.VITE_PROD_BASE_URL }/jobs`,
     });
     return res.data.data.jobs;
   } catch(err) {
