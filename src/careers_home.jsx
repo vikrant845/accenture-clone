@@ -115,7 +115,7 @@ const CareersHome = () => {
       try {
         const res = await axios({
           method: 'GET',
-          url: 'http://localhost:8000/api/jobs'
+          url: import.meta.env.VITE_ENVIRONMENT === 'development' ? `${ import.meta.env.VITE_DEV_BASE_URL }/jobs` : `${ import.meta.env.VITE_PROD_BASE_URL }/jobs`,
         });
         setJobs(res.data.data.jobs);
         // console.log(res.data.data.jobs);
