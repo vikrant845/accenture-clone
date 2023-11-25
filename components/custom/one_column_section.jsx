@@ -27,8 +27,8 @@ const OneColumnSection = ({
         { article && (
           <div className={ `flex flex-wrap ${ articleVariant === '2' ? 'mt-24' : 'mt-40' }` }>
             { 
-              articleData.map(cardData => (
-                <ArticleCard data={ cardData } variant={ articleVariant } />
+              articleData.map((cardData, i) => (
+                <ArticleCard data={ cardData } variant={ articleVariant } key={ i } />
               ))
             }
           </div>

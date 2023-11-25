@@ -42,14 +42,16 @@ const articleData2 = [
   }
 ];
 
-const JobDetails = ({}) => {
+const JobDetails = () => {
   const { jobId } = useParams();
   const [job, setJob] = useState({});
   const [collapsed, setCollapsed] = useState(true);
+  const query = useQuery(['job', jobId], async () => await getJobDetails(jobId));
 
-  const query = useQuery('job', async () => await getJobDetails(jobId));
-
-  if (query.isLoading) return <p>Loading...</p>
+  if (query.isLoading) {
+    console.log('Query loading');
+    return <p>Loading...</p>;
+  }
   
   return (
     <>

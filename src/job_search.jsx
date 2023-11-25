@@ -49,10 +49,9 @@ const articleData2 = [
 const JobSearch = () => {
   const [jobs, setJobs] = useState([]);
   const query = useQuery('jobs', getJobData);
-  useEffect(() => { console.log('Job search rendered'); })
   if (query.isLoading) return <p>Loading...</p>
   
-  if (!query.isLoading) return (
+  return (
     <div className="mt-16">
       <NavBar careers={ true } />
       <SearchSection setJobs={ setJobs } />

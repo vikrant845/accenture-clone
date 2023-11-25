@@ -12,7 +12,9 @@ const JobBanner = ({ jobDetails=false, jobData={} }) => {
   useEffect(() => {
     if (!user) return navigate('/login');
     user.applications.map(application => {
-      if (application.job === jobData._id) setDisabled(true);
+      if (application.job === jobData._id) {
+        setDisabled(true);
+      }
     })
   }, []);
   
@@ -24,9 +26,9 @@ const JobBanner = ({ jobDetails=false, jobData={} }) => {
             <h1 className="text-7xl font-extrabold">Careers</h1>
             <h1 className="text-7xl font-extrabold">at Accenture</h1>
             <ul className="flex items-center py-8">
-              <li className="text-blue-700 underline">Home</li>
+              <li className="text-blue-700 underline"><Link to='/'>Home</Link></li>
               <li className="px-3">|</li>
-              <li className="text-blue-700 underline">Search For Jobs</li>
+              <li className="text-blue-700 underline"><Link to='/careers/job_search'>Search For Jobs</Link></li>
             </ul>
           </div>
         ) }

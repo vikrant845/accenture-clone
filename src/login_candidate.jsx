@@ -39,7 +39,7 @@ const LoginCandidate = () => {
     try {
       const res = await axios({
         method: 'POST',
-        url: 'http://localhost:8000/api/users/login',
+        url: import.meta.env.VITE_ENVIRONMENT === 'development' ? `${ import.meta.env.VITE_DEV_BASE_URL }/users/login` : `${ import.meta.env.VITE_PROD_BASE_URL }/users/login`,
         data: values
       });
       form.reset();
