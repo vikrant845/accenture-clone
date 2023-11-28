@@ -16,9 +16,12 @@ const userSlice = createSlice({
     clearUser: (state) => {
       state.user = undefined;
       state.token = undefined;
+    },
+    addApplication: (state, action) => {
+      state.user.applications.push(action.payload.application);
     }
   }
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setUser, clearUser, addApplication } = userSlice.actions;
 export default userSlice.reducer;

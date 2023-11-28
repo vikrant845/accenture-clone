@@ -12,7 +12,7 @@ const JobBanner = ({ jobDetails=false, jobData={} }) => {
   useEffect(() => {
     if (!user) return navigate('/login');
     user.applications.map(application => {
-      if (application.job === jobData._id) {
+      if (application.job._id === jobData._id) {
         setDisabled(true);
       }
     })
@@ -49,7 +49,7 @@ const JobBanner = ({ jobDetails=false, jobData={} }) => {
               <div className="w-[10rem] relative">
                 <Link to={ `/job/${ jobData._id }/apply` }>
                   <button disabled={ disabled } className="p-3 w-full text-sm bg-black disabled:pointer-events-none disabled:opacity-50 font-bold z-[3] relative transition-all duration-500 hover:-translate-x-2 hover:-translate-y-2 text-white shadow-sm">
-                      { disabled ? <p>Applied On { new Date(user.applications.filter(application => application.job === jobData._id)[0].createdAt).toDateString() }</p> : 'APPLY NOW' }
+                      { disabled ? <p>Applied On { new Date(user.applications.filter(application => application.job._id === jobData._id)[0].createdAt).toDateString() }</p> : 'APPLY NOW' }
                   </button>
                 </Link>
                 <span className="w-full h-full translate-x-1 translate-y-1 bg-gray-400 z-[2] block absolute top-0"></span>

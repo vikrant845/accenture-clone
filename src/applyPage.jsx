@@ -16,12 +16,13 @@ import Footer from "./footer";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Command, CommandGroup, CommandItem } from "@/components/ui/command";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addApplication } from "./slices/userSlice";
 
 const getJobDetails = async (jobId) => {
   const res = await axios({
     method: 'GET',
-    url: `http://localhost:8000/api/jobs/${ jobId }`
+    url: import.meta.env.VITE_ENVIRONMENT === 'development' ? `${ import.meta.env.VITE_DEV_BASE_URL }/jobs/${ jobId }` : `${ import.meta.env.VITE_PROD_BASE_URL }/jobs/${ jobId }`,
   });
   return res.data.data.job;
 }
@@ -73,6 +74,7 @@ const ApplyPage = () => {
   const query = useQuery('job', async () => await getJobDetails(jobId));
   const {user, token} = useSelector(state => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('Select Gender');
@@ -132,13 +134,15 @@ const ApplyPage = () => {
   const onSubmit = async (values, e) => {
     try {
       const res = await axios({
-        url: 'http://localhost:8000/api/application',
+        url: import.meta.env.VITE_ENVIRONMENT === 'development' ? `${ import.meta.env.VITE_DEV_BASE_URL }/application` : `${ import.meta.env.VITE_PROD_BASE_URL }/application`,
         method: 'POST',
         data: { ...values, user: user._id, job: query.data._id },
         headers: {
           'Authorization': `Bearer ${ token }`
         }
       });
+      if (res.status === 200) dispatch(addApplication({ application: res.data.data.application }));
+      navigate('/candidate');
     } catch (err) {
       console.log(err);
     }
@@ -160,7 +164,7 @@ const ApplyPage = () => {
       setLoading(true);
       try {
         const res = await axios({
-          url: 'http://localhost:8000/api/file_upload',
+          url: import.meta.env.VITE_ENVIRONMENT === 'development' ? `${ import.meta.env.VITE_DEV_BASE_URL }/file_upload` : `${ import.meta.env.VITE_PROD_BASE_URL }/file_upload`,
           method: 'POST',
           data: {
             file
