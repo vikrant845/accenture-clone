@@ -42,7 +42,9 @@ const CandidatePage = () => {
             <JobBanner />
             <div className="bg-white shadow-sm p-12 min-h-screen">
               <p>Hi { user.firstName }, Thank you for your interest in Accenture. Use our "Search for jobs" option to look for opportunities that suit you.</p>
-              <JobsSection recents={ false } jobs={ appliedJobs } />
+              <div className="w-full my-16">
+                <JobsSection recents={ false } jobs={ appliedJobs } />
+              </div>
             </div>
           </div>
         </div>

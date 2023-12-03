@@ -49,13 +49,22 @@ const articleData2 = [
 const JobSearch = () => {
   const [jobs, setJobs] = useState([]);
   const query = useQuery('jobs', getJobData);
-  if (query.isLoading) return <p>Loading...</p>
   
   return (
     <div className="mt-16">
       <NavBar careers={ true } />
       <SearchSection setJobs={ setJobs } />
-      <JobsSection title='Latest Jobs' jobs={ query.data } recents={ false } actions={ true } />
+      <div className="flex items-center justify-center min-h-[30rem]">
+        { query.isLoading ?
+          <p className="text-6xl text-[#A100FF]">Loading....</p>
+          :
+          <div className='py-10 font-bold'>
+            <div className="lg:w-[75rem] lg:px-0 w-full mx-auto px-16">
+              <JobsSection title='Latest Jobs' jobs={ query.data } recents={ false } actions={ true } />
+            </div>
+          </div>
+        }
+      </div>
       <OneColumnSection
         title='Stay connected'
         article={ true }

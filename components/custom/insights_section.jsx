@@ -6,7 +6,7 @@ const InsightsSection = ({ data, centered, title, description=null }) => {
   const trigger = useRef();
   
   return (
-    <div>
+    <div id='latest_insights'>
       <div className={ `flex w-full flex-col ${ centered ? 'justify-center items-center' : '' } py-12` }>
         { title && <h1 className='text-center lg:text-5xl md:text-4xl font-bold w-3/5'>{ title }</h1> }
         { description && <p className='font-light mt-6 lg:text-xl md:text-lg'>{ description }</p> }

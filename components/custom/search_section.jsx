@@ -53,7 +53,7 @@ const SearchSection = ({ setJobs }) => {
   return (
     <>
       <div className="flex justify-center items-center bg-[#F2F2F2] py-20">
-        <div className="w-[75rem]">
+        <div className="w-[75rem] md:px-0 mx-14">
           <h1 className="text-7xl font-extrabold mb-8">Search Jobs at Accenture</h1>
           <Form { ...form }>
             <form onSubmit={ form.handleSubmit(onSubmit) }>
@@ -64,12 +64,12 @@ const SearchSection = ({ setJobs }) => {
                   <FormItem>
                     <FormControl>
                       <div className="flex lg:flex-row flex-col mb-4">
-                        <Input { ...field } onKeyDown={ (event) => debounce(queryDB, event) } placeholder='Use quotation marks for exact matches' className='bg-white border-2 h-12 border-gray-400 rounded-none p-4 text-lg focus-visible:ring-0 focus-visible:ring-offset-0' />
-                        <Button className='bg-black text-white rounded-none h-12 lg:w-auto w-fit' onClick={ queryDB }>
+                        <Input { ...field } onKeyDown={ (event) => debounce(queryDB, event) } placeholder='Use quotation marks for exact matches' className='bg-white border-2 h-12 border-gray-400 rounded-none p-4 text-lg focus-visible:ring-0 focus-visible:ring-offset-0 lg:mb-0 mb-4' />
+                        <Button className='bg-black text-white rounded-none h-12 lg:w-auto w-fit lg:mb-0 mb-4' onClick={ queryDB }>
                           <Search className="mr-4 w-5 h-5" />
                           SEARCH
                         </Button>
-                        <Button className='bg-black text-white rounded-none lg:ml-4 lg:w-auto w-fit h-12'>ACCESS EXISTING APPLICATION</Button>
+                        <Button className='bg-black text-white rounded-none lg:ml-4 lg:w-auto w-fit h-12 lg:mb-0 mb-4'>ACCESS EXISTING APPLICATION</Button>
                       </div>
                     </FormControl>
                   </FormItem>

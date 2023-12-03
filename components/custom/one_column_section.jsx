@@ -13,8 +13,8 @@ const OneColumnSection = ({
   articleVariant='1'
 }) => {
   return (
-    <div className={ `py-12 flex justify-center ${ background ? 'bg-gray-100' : 'bg-white' } mt-8` }>
-      <div className="w-[75rem]">
+    <div className={ `py-12 flex lg:flex-row flex-col justify-center ${ background ? 'bg-gray-100' : 'bg-white' } mt-8` }>
+      <div className="xl:w-[75rem] lg:w-5/6 md:px-0 sm:px-24 px-14">
         <h1 className="text-5xl font-bold">{ title }</h1>
         <p className="my-6">{ description }</p>
         <div className="flex flex-wrap">

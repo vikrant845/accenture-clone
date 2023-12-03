@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import bigLogo from '../../src/assets/images/accenture_big_logo.svg';
 import { Info, Share, Star } from 'lucide-react';
 import { useSelector } from 'react-redux';
@@ -8,15 +8,16 @@ const JobBanner = ({ jobDetails=false, jobData={} }) => {
 
   const user = useSelector(state => state.user.user);
   const [disabled, setDisabled] = useState(false);
-  const navigate = useNavigate();
   useEffect(() => {
-    if (!user) return navigate('/login');
-    user.applications.map(application => {
-      if (application.job._id === jobData._id) {
-        setDisabled(true);
-      }
-    })
-  }, []);
+    if (user) {
+      user.applications.map(application => {
+        if (application.job._id === jobData._id) {
+          setDisabled(true);
+        }
+      })
+    }
+    if (window.scrollY > 0) window.scrollTo(0, 0);
+  }, [user, setDisabled]);
   
   return (
     <div className="max-w-[75rem] mx-auto">

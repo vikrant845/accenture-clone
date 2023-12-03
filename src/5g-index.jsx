@@ -24,7 +24,8 @@ const indexData = {
   image: false,
   progress: false,
   sticky: true,
-  links: [ 'Explore Our Latest Insights', 'Why Does 5G Matter?', 'How Is 5G Different From 4G?', 'What Can 5G Offer?', 'How Can Businesses Prepare For 5G?' ]
+  links: [ 'Explore Our Latest Insights', 'Why Does 5G Matter?', 'How Is 5G Different From 4G?', 'What Can 5G Offer?', 'How Can Businesses Prepare For 5G?' ],
+  ids: ['latest_insights', 'why_it_matters', 'how_is_it_different', 'offer', 'preparation']
 }
 
 const accordionData = [
@@ -130,6 +131,7 @@ const FiveGIndex = () => {
         background={ true }
         note={ true }
         noteText='Investing in 5G and transforming enterprise networks is a must for companies seeking to unlock the full potential of the Cloud Continuum.'
+        id='why_it_matters'
       >
         <h5 className="font-bold">5G and cloud</h5>
         <div className="text-lg">
@@ -168,12 +170,14 @@ const FiveGIndex = () => {
         image={ true }
         imageLink={ diagram }
         background={ false }
+        id='how_is_it_different'
       />
       <TwoColumnSection
         title='What can 5G offer?'
         image={ true }
         imageLink={ fiveGPortrait }
         background={ true }
+        id='offer'
       >
         <div className="flex-col text-lg">
           <p className="mb-4">5G is fueling a massive digital shift, from product development to transportation, from entertainment to agriculture.</p>
@@ -195,6 +199,7 @@ const FiveGIndex = () => {
         background={ false }
         note={ true }
         noteText='5G connectivity unlocks new high-speed, low latency applications where edge + artificial intelligence can be used to perform processes 10x or 100x better than humans.'
+        id='preparation'
       >
         <div className="text-lg">
           <p className="mb-4">5G technology creates new experiences, delivers cost and productivity benefits, unlocks new products, services and revenue streams, and helps harness the value of the Cloud Continuum. 5G networks also support sustainability thanks to the technological shift from legacy networks, driving significant energy demand reductions and reducing carbon emissions.</p>

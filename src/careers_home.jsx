@@ -155,7 +155,11 @@ const CareersHome = () => {
           <a href="#" className='text-blue-700 font-bold'>DIGITAL ENGINEERING AND MANUFACTURING CAREERS</a>
         </div>
       </TwoColumnSection>
-      <JobsSection jobs={ jobs } title='Latest Jobs in Pune' background={ true } description='These jobs are in the city indicated by your IP address. To change countries, use the flag icon in the navigation.' explore={ true } />
+      <div className='py-10 font-bold bg-[#F2F2F2]'>
+        <div className="lg:w-[75rem] lg:px-0 w-full mx-auto px-16">
+          <JobsSection jobs={ jobs } title='Latest Jobs in Pune' description='These jobs are in the city indicated by your IP address. To change countries, use the flag icon in the navigation.' explore={ true } />
+        </div>
+      </div>
       <NewsBanner title='THE ACCENTURE 360° VALUE REPORTING EXPERIENCE' subTitle='Measuring our success by the value we deliver in all directions.' />
       <OneColumnSection title='Explore Accenture jobs' description='Start an Accenture career in India and help us make a difference.' people={ true } peopleData={ peopleData } />
       <OneColumnSection title='Creating a powerful force for change' description='Leadership is everyone’s responsibility with a career at Accenture India. We expect all our people and enable us to successfully create 360° value.' background={ false } article={ true } articleData={ articleData } />

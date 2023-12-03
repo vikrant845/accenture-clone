@@ -15,7 +15,8 @@ const TwoColumnSection = ({
   videoData=null,
   imageLink=null,
   background=true,
-  reverse=false
+  reverse=false,
+  id=''
 }) => {
 
   const [ expanded, setExpanded ] = useState(false);
@@ -23,7 +24,7 @@ const TwoColumnSection = ({
   const width = useSelector((state) => state.viewport.width);
   
   return (
-    <div className={ `py-12 flex justify-center ${ background ? 'bg-gray-100' : 'bg-white' } mt-8` }>
+    <div className={ `py-12 flex justify-center ${ background ? 'bg-gray-100' : 'bg-white' } mt-8` } id={ id }>
       <div className="lg:w-[75rem] w-full lg:px-0 px-12">
         <h1 className="lg:text-5xl text-3xl font-bold">{ title }</h1>
         <div className={ `${ width < 1024 ? 'flex-col' : 'flex' } ${ reverse && 'lg:flex-row-reverse flex-col-reverse' } mt-8` }>
