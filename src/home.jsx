@@ -12,13 +12,13 @@ import Footer from './footer';
 import IndexSection from '@/components/custom/index_section';
 import InsightsSection from '@/components/custom/insights_section';
 import NavBar from './navbar';
-import { useSelector } from 'react-redux';
 
 const indexData = {
   image: true,
   centered: false,
   progress: true,
-  links: ['Case studies & stories', 'Join our team', 'Ideas that make an impact', 'Leading through change']
+  links: ['Case studies & stories', 'Join our team', 'Ideas that make an impact', 'Leading through change'],
+  ids: ['latest_insights', 'why_it_matters', 'how_is_it_different', 'offer', 'preparation']
 };
 
 const insightCardData = [
