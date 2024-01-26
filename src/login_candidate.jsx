@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "./slices/userSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 const formSchema = zod.object({
   email: zod.string().email({
@@ -23,7 +23,7 @@ const LoginCandidate = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { jobApply } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -46,6 +46,10 @@ const LoginCandidate = () => {
       dispatch(setUser({ user: res.data.data.user, token: res.data.data.token }));
       localStorage.setItem('token', res.data.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.data.user));
+      if (searchParams.get('to')) {
+        navigate(`/job/${ searchParams.get('to') }/apply`);
+        return;
+      }
       navigate('/candidate');
     } catch (err) {
       console.log(err);

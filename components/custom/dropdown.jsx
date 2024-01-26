@@ -30,7 +30,7 @@ const CustomDropdown = ({ twoColumn, data, levelled }) => {
           <DropdownMenuGroup>
             <DropdownMenuItem className='text-[17px] flex content-between items-start leading-10 text-blue-700 font-normal focus:bg-transparent focus:text-blue-700 hover:text-blue-700 hover:bg-transparent flex-wrap' onClick={ () => setOpen(false) }>
               { data.subLinks.map(link => (
-                <Link to={ link?.to ? `/${ link.to }` : '' } className='w-[25%] max-w-[25%]' key={ link.name ? link.name : link }>{ link?.name ? link.name : link }</Link>
+                <Link to={ link?.to ? `/${ link.to }` : '' } className={ `w-[25%] max-w-[25%] ${ !link.to && 'text-black cursor-default' }` } key={ link.name ? link.name : link }>{ link?.name ? link.name : link }</Link>
               )) }
             </DropdownMenuItem>
           </DropdownMenuGroup>
@@ -45,7 +45,7 @@ const CustomDropdown = ({ twoColumn, data, levelled }) => {
                     <DropdownMenuItem key={ i } className='text-[17px] flex content-between items-start pl-0 leading-10 text-blue-700 font-normal focus:bg-transparent focus:text-blue-700 hover:text-blue-700 hover:bg-transparent flex-wrap' onClick={ () => setOpen(false) }>
                       {
                         level.links.map(link => (
-                          <Link to={ link?.to ? link.to : '' } className={ `w-[25%] max-w-[25%] ${ level.size === 'big' && 'text-3xl' }` } key={ link.name ? link.name : link }>{ link?.name ? link.name : link }</Link>
+                          <Link to={ link?.to ? link.to : '' } className={ `w-[25%] max-w-[25%] ${ level.size === 'big' && 'text-3xl' } ${ !link.to && 'text-black cursor-default' }` } key={ link.name ? link.name : link }>{ link?.name ? link.name : link }</Link>
                         ))
                       }
                     </DropdownMenuItem>

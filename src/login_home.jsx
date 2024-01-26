@@ -2,10 +2,14 @@ import NavBar from "./navbar";
 import bigLogo from '../src/assets/images/accenture_big_logo.svg';
 import Footer from "./footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import JobBanner from "@/components/custom/job_banner";
+import { useEffect } from "react";
 
 const Login = () => {
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
   return (
     <div className="bg-[#F2F2F2] mt-16">
       <NavBar login={ true } />
@@ -37,7 +41,7 @@ const Login = () => {
                 </TabsList>
                 <TabsContent value='candidate'>
                   <div className="w-[16rem] relative">
-                    <Link to='/login/candidate'>
+                    <Link to={ `/login/candidate?to=${ searchParams.get('to') }` }>
                       <button className="p-3 w-full text-sm bg-black font-bold z-[3] relative transition-all duration-500 hover:-translate-x-2 hover:-translate-y-2 text-white shadow-sm">LOGIN</button>
                     </Link>
                     <span className="w-full h-full translate-x-1 translate-y-1 bg-gray-400 z-[2] block absolute top-0"></span>

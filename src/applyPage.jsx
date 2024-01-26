@@ -183,7 +183,7 @@ const ApplyPage = () => {
     };
   }
   
-  useEffect(() => { if (!user) navigate('/login') }, []);
+  useEffect(() => { if (!user) navigate(`/login?to=${ jobId }`) }, []);
   
   if (query.isLoading) return <p>Loading....</p>;
   

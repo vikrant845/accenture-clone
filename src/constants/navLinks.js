@@ -85,7 +85,7 @@ export const NavLinks = [
       {
         links: [
           { name: 'Careers Home', to: '/careers' },
-          'Search Jobs'
+          { name: 'Search Jobs', to: '/careers/job_search' }
         ],
         size: 'big',
         image: 'arrow'
@@ -93,10 +93,10 @@ export const NavLinks = [
       {
         title: 'JOIN US',
         links: [
-          'Search and Apply',
-          'Experienced Professionals',
-          'Training & Development',
-          'Work Environment'
+          { name: 'Search and Apply', to: '/careers/job_search' },
+          { name: 'Experienced Professionals', to: '/careers/job_search' },
+          { name: 'Training & Development', to: '/careers/job_search' },
+          { name: 'Work Environment', to: '/careers/job_search' },
         ]
       },
       {
